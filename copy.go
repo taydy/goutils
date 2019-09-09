@@ -188,6 +188,7 @@ func set(to, from reflect.Value) bool {
 		} else if to.IsNil() {
 			to.Set(reflect.New(to.Type().Elem()))
 		}
+		//to = to.Elem()
 	}
 
 	if from.Type().AssignableTo(to.Type()) {
@@ -196,6 +197,8 @@ func set(to, from reflect.Value) bool {
 		to.Set(from.Convert(to.Type()))
 	} else if from.Kind() == reflect.Ptr {
 		return set(to, from.Elem())
+	} else {
+		return false
 	}
 	return true
 }
