@@ -2,6 +2,7 @@ package goutils
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 )
 
@@ -93,7 +94,8 @@ func Copy(toValue interface{}, fromValue interface{}) (err error) {
 					if toField.CanSet() {
 						if !set(toField, fromField) {
 							if err := Copy(toField.Addr().Interface(), fromField.Interface()); err != nil {
-								return err
+								fmt.Printf("field %s copy err, %v", name, err)
+								continue
 							}
 						}
 					}
