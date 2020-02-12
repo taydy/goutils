@@ -12,7 +12,7 @@ func TestMaxInt(t *testing.T) {
 
 func TestMinInt(t *testing.T) {
 	a, b, c := 1, 2, 3
-	if min := MaxInt(a, b, c); min != a {
+	if min := MinInt(a, b, c); min != a {
 		t.Logf("except min is %d, but actual is %d", a, min)
 		t.FailNow()
 	}
